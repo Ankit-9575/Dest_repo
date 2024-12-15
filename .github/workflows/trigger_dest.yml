@@ -1,0 +1,17 @@
+name: Second Action Triggered by Dispatch
+
+on:
+  repository_dispatch:
+    types: [trigger-second-action]  # Match this with the event-type in the first action
+
+jobs:
+  second_action:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run the second action logic
+        run: |
+          echo "Code was merged into source branch, and this action was triggered."
